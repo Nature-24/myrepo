@@ -1,0 +1,89 @@
+#!/bin/bash
+
+
+# Define an empty list to store applicant information
+applicants = []
+
+# Define a function to collect applicant information
+def get_applicant_info():
+    name = input("Enter applicant name: ")
+    email = input("Enter applicant email: ")
+    phone = input("Enter applicant phone number: ")
+    position = input("Enter position applied for: ")
+    experience = input("Enter years of experience: ")
+    education = input("Enter highest degree earned: ")
+    # Create a dictionary to store the information
+    applicant = {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "position": position,
+        "experience": experience,
+        "education": education
+    }
+    # Add the applicant dictionary to the list of applicants
+    applicants.append(applicant)
+    print("Applicant information saved.")
+
+# Define a function to display applicant information
+def display_applicants():
+    for applicant in applicants:
+        print(f"Name: {applicant['name']}")
+        print(f"Email: {applicant['email']}")
+        print(f"Phone: {applicant['phone']}")
+        print(f"Position: {applicant['position']}")
+        print(f"Experience: {applicant['experience']} years")
+        print(f"Education: {applicant['education']}")
+        print("")
+
+# Define a function to search for applicants by name
+def search_applicant():
+    name = input("Enter name of applicant to search for: ")
+    for applicant in applicants:
+        if applicant['name'] == name:
+            print(f"Name: {applicant['name']}")
+            print(f"Email: {applicant['email']}")
+            print(f"Phone: {applicant['phone']}")
+            print(f"Position: {applicant['position']}")
+            print(f"Experience: {applicant['experience']} years")
+            print(f"Education: {applicant['education']}")
+            print("")
+            return
+    print("Applicant not found.")
+
+# Define a function to delete an applicant by name
+def delete_applicant():
+    name = input("Enter name of applicant to delete: ")
+    for applicant in applicants:
+        if applicant['name'] == name:
+            applicants.remove(applicant)
+            print("Applicant deleted.")
+            return
+    print("Applicant not found.")
+
+# Define a function to display a menu and handle user input
+def menu():
+    while True:
+        print("1. Add applicant")
+        print("2. Display applicants")
+        print("3. Search for applicant")
+        print("4. Delete applicant")
+        print("5. Quit")
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            get_applicant_info()
+        elif choice == "2":
+            display_applicants()
+        elif choice == "3":
+            search_applicant()
+        elif choice == "4":
+            delete_applicant()
+        elif choice == "5":
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+# Call the menu function to start the program
+menu()
+
+
